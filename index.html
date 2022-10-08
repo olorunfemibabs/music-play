@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player | babs</title>
+    <!--adding the style's file and the icon link for font awesome and material-->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a898a3367c.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+    <!--the music player container-->
+    <div class="wrapper">
+
+        <!--the top bar-->
+        <div class="top-bar">
+            <i class="fa-solid fa-chevron-down"></i>
+            <span>Now Playing</span>
+            <i class="fa-solid fa-ellipsis"></i>
+        </div>
+
+        <!--the art cover for each music-->
+        <div class="art-cover">
+            <img src="" alt="">
+        </div>
+
+        <!--the song details-->
+        <div class="under-art">
+            <div class="song-detail">
+                <p class="title"></p>
+                <p class="artist"></p>
+            </div>
+
+            <!--the icon for the volume of the audio-->
+            <div class="heart">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+        </div>
+
+        <!--the song progress; the bar progress, current time and total duration-->
+        <div class="progress-area">
+            <div class="progress-bar"></div>
+            <div class="timer">
+                <span class="current">0:00</span>
+                <span class="duration">3:20</span>
+            </div>
+            <audio id="main-audio" src=""></audio>
+        </div>
+        
+
+    <!--Define the section for displaying the controls-->
+        <div class="controls">
+            <i id="repeat" class="material-icons" title="playlist looped">repeat</i>
+            <i id="prev" class="fa-solid fa-backward"></i>
+            <div class="play-pause">
+                <i class="fa-regular fa-circle-play"></i>
+            </div>
+            <i id="next" class="fa-solid fa-forward"></i>
+            <i id="show-more-music" class="material-icons">queue_music</i>
+        </div>
+
+        <!--the song's playlist-->
+        <div class="music-list">
+            <div class="header">
+                <div class="row">
+                    <i class="material-icons">queue_music</i>
+                    <span>Music list</span>
+                    <i id="close" class="fa fa-close" aria-hidden="true"></i>
+                </div>
+            </div>
+            <!--the song list. Also in the JS file-->
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+    <!--Adding both scripts-->
+    <script src="js/music-list.js"></script>
+    <script src="js/player.js"></script>
+</body>
+</html>

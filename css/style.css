@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #2193b0;
+  --thyme: #5edc1f;
+  --seagreen: #6dd5ed;
+  --darkgreen: #013220;
+  --lightblack: #303134;
+  --white: #FFFFFF;
+  --darkwhite: #E1D9D1;
+  --greenshadow: #1e3333;
+  --darkshadow: #010203;
+  --grayblack: #202124;
+  --gray94: #f0f0f0;
+}
+
+/*using your flex to make the music player be in the center*/
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(0deg, var(--grayblack) 0%, var(--lightblack) 100%);
+}
+
+/* designing the body of the music player */
+.wrapper {
+  width: 380px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  padding: 25px 30px;
+  background: linear-gradient(0deg, var(--grayblack) 0%, var(--lightblack) 100%);
+  box-shadow: 0px 6px 15px var(--darkshadow);
+}
+
+.wrapper i {
+  cursor: pointer;
+}
+
+/* using flex box to arrange the top bar */
+.top-bar {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+/* clipping a background to text and making the
+text transparent so the background color can work */
+.top-bar i {
+  font-size: 28px;
+  color: var(--darkwhite);
+  user-select: none;
+  background: linear-gradient(145deg, var(--green) 0%, var(--seagreen) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
+}
+
+.top-bar span {
+  font-size: 18px;
+  color: var(--darkwhite);
+  opacity: 0.9;
+}
+
+/* overflow - hidden is to make the image stay fit with in the
+div and not allow the excess outside the div.
+background-size - contain ensures that the entire
+background image will fit the background area, keeping its original
+aspect ratio also */
+.art-cover {
+  height: 256px;
+  width: 100%;
+  margin-top: 25px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-size: cover;
+  box-shadow: 0px 6px 12px var(--darkshadow);
+}
+
+/* to ensure that the image fit into the container
+object-fit property specifies how the image should be resized to fit its container*/
+.art-cover img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.under-art {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.heart i {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 24px;
+  user-select: none;
+  background: linear-gradient(145deg, var(--green) 0%, var(--seagreen) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* making the song detail fit to the left */
+.song-detail {
+  text-align: left;
+  margin: 30px 0;
+  color: var(--darkwhite);
+}
+
+.song-detail .title {
+  font-size: 1.3rem;
+}
+
+.song-detail .artist {
+  opacity: 0.7;
+  font-size: 1.1rem;
+}
+
+
+/* designing the area where the bar moves through*/
+.progress-area {
+  height: 6px;
+  width: 100%;
+  background: var(--gray94);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* designing the progress bar and it inherits the same height and border
+radius with the progress area. making it relative so that the circular 
+ball which indicates movement can be absolute to it. 
+*/
+.progress-area .progress-bar {
+  height: inherit;
+  width: 0%;
+  position: relative;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green) 0%, var(--seagreen) 100%)
+}
+
+/* setting the ball with the before and content""
+ also setting the ball to stay at the center of the 
+ progress area */
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background-color: #010203;
+  border-radius: inherit;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  background: inherit;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* making the ball appear on hover */
+.progress-area:hover .progress-bar::before {
+  opacity: 1;
+}
+
+.timer {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.timer span {
+  font-size: 0.8rem;
+  color: var(--darkwhite);
+}
+
+
+.controls {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  margin: 40px 0 5px 0;
+}
+
+.controls i {
+  font-size: 24px;
+  user-select: none;
+  background: linear-gradient(90deg, var(--seagreen) 0%, var(--seagreen) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.7;
+}
+
+.controls .material-icons {
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.controls i:nth-child(2),
+.controls i:nth-child(4) {
+  font-size: 22px;
+  user-select: none;
+  background: linear-gradient(90deg, var(--seagreen) 0%, var(--seagreen) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+
+.controls .fa-backward {
+  margin-right: -13px;
+}
+
+.controls .fa-forward {
+  margin-left: -13px;
+}
+
+/* setting space around the play-pause icon and making it
+circular, making the space a bit larger than the play icon. the icon 
+also sits well in the center of the space using flex */
+.controls .play-pause {
+  margin-top: -16px;
+  height: 54px;
+  width: 54px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(var(--white) 0%, var(--darkwhite) 100%);
+  box-shadow: 0px 0px 5px var(--seagreen);
+}
+
+/* create content space to house the background-color so, the 
+  icon can inherit the color using clip and transparent. Making the
+  position absolute relative to the play-pause icon itself */
+.play-pause::before {
+  position: absolute;
+  content: "";
+  height: 44px;
+  width: 44px;
+  border-radius: inherit;
+  background: linear-gradient(145deg, var(--green) 0%, var(--seagreen) 100%);
+}
+
+/*designing the icon to inherit the background color 
+  also using the line height to make the lines fit well*/
+.play-pause i {
+  height: 44px;
+  width: 44px;
+  line-height: 44px;
+  text-align: center;
+  border-radius: inherit;
+  background: inherit;
+  background-clip: text;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+}
+
+/*the music list is positioned relative the wrapper, bottom 0,
+  -55% to keep it down halfway. opacity to keep it off the
+  screen and z-index to appear above the wrapper element
+*/
+.music-list {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  bottom: -55%;
+  opacity: 0;
+  pointer-events: none; 
+  z-index: 5;
+  width: 100%;
+  padding: 15px 30px;
+  border-radius: 15px;
+  background: linear-gradient(0deg, var(--grayblack) 0%, var(--lightblack) 100%);
+  box-shadow: 0px -5px 10px var(--darkshadow);
+  transition: all 0.15s ease-out;
+
+}
+
+/*will use the show class in javascript*/
+.music-list.show {
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* using flex to arrange the icons and span into row
+  and also the contents in the li; song and time duration */
+.music-list .header .row,
+.music-list li {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.music-list .header .row {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  font-size: 19px;
+  color: var(--darkwhite);
+}
+
+.header .row i {
+  cursor: pointer;
+}
+
+.header .row span{
+    margin-left: -10px;
+  }
+
+.header .fa-close {
+  font-size: 22px;
+  color: var(--darkwhite);
+}
+
+/* making the overflowing element have a scrollbar */
+.music-list ul {
+  margin: 10px 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+/* scrollbar will not appear*/
+.music-list ul::-webkit-scrollbar {
+  width: 0px;
+}
+
+.music-list ul li {
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  color: var(--darkwhite);
+  border-bottom: 1px solid var(--darkwhite);
+}
+
+/* making the border line at the bottom of
+   of the last list element to disappear
+*/
+.music-list ul li:last-child {
+  border-bottom: 0px;
+}
+
+.music-list ul li .row span {
+  font-size: 1.063rem;
+  text-align: left;
+}
+
+.music-list ul li .row p {
+  opacity: 0.7;
+  text-align: left;
+}
+
+ul li .audio-duration {
+  font-size: 1rem;
+}
+
+ul li.playing {
+  color: var(--green);
+  pointer-events: none;
+}
